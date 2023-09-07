@@ -16,7 +16,7 @@ from bs4 import BeautifulSoup
 import requests
 import json
 from langchain.schema import SystemMessage
-from streamlit import streamlit 
+import streamlit as st
 
 load_dotenv()
 brwoserless_api_key = os.getenv("BROWSERLESS_API_KEY")
@@ -43,7 +43,6 @@ def search(query):
 def scrape_website(objective: str, url: str):
     # scrape website, and also will summarize the content based on objective if the content is too large
     # objective is the original objective & task that user give to the agent, url is the url of the website to be scraped
-
     print("Scraping website...")
     # Define the headers for the request
     headers = {
@@ -168,28 +167,13 @@ agent = initialize_agent(
 
 # 4. Use streamlit to create a web app
 def main():
-    streamlit.set_page_config(page_title="AI research agent", page_icon=":bird:")
-    streamlit.header("AI research agent :bird:")
-    query = streamlit.text_input("Research goal")
+    st.set_page_config(page_title="AI research agent", page_icon=":bird:")
+    st.header("AI research agent :bird:")
+    query = st.text_input("Research goal")
     if query:
-        streamlit.write("Doing research for ", query)
+        st.write("Doing research for ", query)
         result = agent({"input": query})
-        streamlit.info(result['output'])
+        st.info(result['output'])
 
 if __name__ == '__main__':
     main()
-
-# 5. Set this as an API endpoint via FastAPI
-""" app = FastAPI() """
-""""""
-""""""
-""" class Query(BaseModel): """
-"""     query: str """
-""""""
-""""""
-""" @app.post("/") """
-""" def researchAgent(query: Query): """
-"""     query = query.query """
-"""     content = agent({"input": query}) """
-"""     actual_content = content['output'] """
-"""     return actual_content """
