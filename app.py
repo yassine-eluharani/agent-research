@@ -49,25 +49,20 @@ def scrape_website(objective: str, url: str):
         'Cache-Control': 'no-cache',
         'Content-Type': 'application/json',
     }
-
     # Define the data to be sent in the request
     data = {
         "url": url
     }
-
     # Convert Python object to JSON string
     data_json = json.dumps(data)
-
     # Send the POST request
     post_url = f"https://chrome.browserless.io/content?token={brwoserless_api_key}"
     response = requests.post(post_url, headers=headers, data=data_json)
-
     # Check the response status code
     if response.status_code == 200:
         soup = BeautifulSoup(response.content, "html.parser")
         text = soup.get_text()
         print("CONTENTTTTTT:", text)
-
         if len(text) > 10000:
             output = summary(objective, text)
             return output
@@ -75,7 +70,6 @@ def scrape_website(objective: str, url: str):
             return text
     else:
         print(f"HTTP request failed with status code {response.status_code}")
-
 
 def summary(objective, content):
     llm = ChatOpenAI(temperature=0, model="gpt-3.5-turbo-16k-0613")
