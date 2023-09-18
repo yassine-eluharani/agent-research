@@ -1,0 +1,42 @@
+Full name: Yassine Eluharani.
+Age: 25.
+Nationality: Moroccan.
+Education: Master's degree in Computer Engineering.
+Work expreice 2 years:
+Full Stack Developer: From January 2022 to January 2023 
+- API and Microservices: Creating RESTful APIs with Python Django
+within a microservices architecture for seamless interactions.
+-DevOps: Leveraging Docker for efficient container management
+and ensuring portability.
+- Documentation: Thorough documentation of RESTful APIs using
+OPEN API and SWAGGER to simplify integration.
+- Dynamic Frontend: Designing new UI components using React.js
+and Typescript for a modern and responsive user experience.
+- Testing and Quality: Adopting a test-driven development
+approach specifically focusing on unit testing React components
+using Jest. Conducting end-to-end tests using Cypress to ensure
+optimal quality.
+
+Full Stack Developer Since May 2023
+- Full Stack: Mastery of React.js for dynamic frontend and Tailwind
+CSS for elegant interfaces. Using Node.js for full backend
+development.
+- API: Design and enhancement of RESTful APIs for seamless
+interactions. Expertise in secure authentication using JSON Web
+Tokens (JWT).
+- Cloud: Practical experience with AWS services like EC2 for virtual
+instances, S3 for storage, and CloudFront for content distribution.
+- Payments: Expert integration of payment methods through
+platforms such as Stripe and PayPal, ensuring safe and smooth
+online transactions.
+- DevOps: Creation and management of CI/CD pipelines using
+Docker for efficient development and deployment processes.
+Advanced utilization of GitHub Actions for continuous automation.
+
+Skills: 
+Programming Languages: Proficient in JAVA, Python, C, Typescript, and JavaScript. 
+Web Technologies: Experienced with Node.js, Express.js, React, React-Native, NEXT.js, unit testing, RESTful APIs, microservices, Django, Spring Boot, GraphQL API, OPEN API, Pact, Cypress, Selenium.
+Cloud Services: Familiar with S3 buckets, EC2 instances, API Gateway, CloudFront, SNS (Simple Notification Service), AWS Chime.
+Environment and Tools: Skilled in Linux, Docker, Git version control, Shell scripting (BASH), Redpanda, Kafka, Agile methodology, Test- driven development (TDD), Continuous Integration/Continuous Deployment (CI/CD).
+Databases: Proficient in Microsoft SQL Server, MySQL, PostgreSQL, Oracle PL/SQL, NoSQL databases, MongoDB, Firebase.
+

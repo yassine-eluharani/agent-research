@@ -7,7 +7,7 @@ from helper import scrape_website
 with open('./data/cv.txt', 'r') as file:
     cv_text = file.read()
 
-llm = OpenAI(temperature=0.5)
+llm = OpenAI(model_name="text-davinci-003")
 #job = "https://www.jobbank.gc.ca/jobsearch/jobposting/39074081?source=searchresults"
 #job_scrapped = scrape_website(job)
 job_scrapped = ("""
@@ -19,32 +19,22 @@ job_template = """
     Extract the information nessecary to write a job application email.
     And this is my CV: {CV_file},
     based on my CV write a job application email.
+    In the email include these point:
+        1/ I am from morocco.
+        2/ I am currently working on my express entry visa for Cananda,
+        3/ I would need a sponsership
 """
+
+gptPrompt = """
+this is my cv "{CV_file}",
+write an email job application for this job description "{job_desc}" 
+"""
+
 job_prompt_template = PromptTemplate(
     input_variables=["job_desc", "CV_file"], 
-    template=job_template
+    template=gptPrompt
 )
-job_chain = LLMChain(llm=llm, prompt=job_prompt_template, output_key="important_information")
-
-email_template = """
-Given these information {important_information} extracted from my cv and the job description,
-Write a job application email, for that job using the extracted nessecary information from CV,
-    In the email include these point:
-    1/ I am from morocco.
-    2/ I am currently working on my express entry visa for Cananda,
-    3/ I would need a sponsership
-
-    4/ DO NOT Mention all the skills just the ones mathing the job offer.
-    5/ Less about me and my skills and more about what I can do for the company.
-"""
-prompt_template = PromptTemplate(input_variables=["important_information"], template=email_template)
-email_chain = LLMChain(llm=llm, prompt=prompt_template, output_key="email")
-
-overall_chain = SequentialChain(
-    chains=[job_chain, email_chain],
-    input_variables=["job_desc","CV_file"],
-    output_variables=["email"],
-    verbose=True)
-
-output = overall_chain({"job_desc":job_scrapped, "CV_file": CV_text})
+chain = LLMChain(llm=llm, prompt=job_prompt_template)
+output = chain.run({"job_desc":job_scrapped, "CV_file": cv_text})
 print(output)
+
