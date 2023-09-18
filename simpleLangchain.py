@@ -1,13 +1,14 @@
 from langchain.llms import OpenAI
+from langchain.chat_models import ChatOpenAI
 from langchain.prompts import PromptTemplate
 from langchain.chains import LLMChain, SequentialChain
 from helper import scrape_website
 
-# 4. Build agent that makes sense of that data, CV, and job desc
 with open('./data/cv.txt', 'r') as file:
     cv_text = file.read()
 
-llm = OpenAI(model_name="text-davinci-003")
+#llm = OpenAI(model="text-davinci-003",verbose=True)
+llm = ChatOpenAI(temperature=0, model="gpt-3.5-turbo-16k-0613")
 #job = "https://www.jobbank.gc.ca/jobsearch/jobposting/39074081?source=searchresults"
 #job_scrapped = scrape_website(job)
 job_scrapped = ("""
